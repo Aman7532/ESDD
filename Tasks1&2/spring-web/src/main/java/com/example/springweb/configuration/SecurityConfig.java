@@ -14,14 +14,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SecurityConfig  implements WebMvcConfigurer {
     private final RequestInterceptor requestInterceptor;
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        System.out.println("Inside Interceptor=======================");
-//        // Apply the interceptor to all endpoints except /auth/login
-//        registry.addInterceptor(requestInterceptor)
-//                .addPathPatterns("/api/v1/products")
-//                .excludePathPatterns("/api/v1/auth/**","/api/v1/login","/api/v1/customer");
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        System.out.println("Inside Interceptor=======================");
+        // Apply the interceptor to all endpoints except /auth/login
+        registry.addInterceptor(requestInterceptor)
+                .addPathPatterns("/api/v1/products")
+                .excludePathPatterns("/api/v1/auth/**","/api/v1/login","/api/v1/customer");
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
